@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" aria-label="Shoreline Private Parking Icon">
+  <defs>
+    <linearGradient id="oceanGrad512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A2540" />
+      <stop offset="50%" stop-color="#005B96" />
+      <stop offset="100%" stop-color="#00A896" />
+    </linearGradient>
+    <linearGradient id="waveGrad512" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00A896" />
+      <stop offset="100%" stop-color="#02C39A" />
+    </linearGradient>
+    <linearGradient id="goldAccent512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4A261" />
+      <stop offset="100%" stop-color="#E76F51" />
+    </linearGradient>
+    <filter id="shadow512" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0A2540" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect x="32" y="32" width="448" height="448" rx="112" fill="url(#oceanGrad512)" filter="url(#shadow512)" />
+
+  <!-- Subtle Outer Border Accent -->
+  <rect x="32" y="32" width="448" height="448" rx="112" fill="none" stroke="#FFFFFF" stroke-opacity="0.15" stroke-width="4" />
+
+  <!-- Marine Wave Accents -->
+  <path d="M 64 340 Q 160 295 256 340 T 448 340 L 448 365 Q 352 320 256 365 T 64 365 Z" fill="url(#waveGrad512)" opacity="0.85" />
+  <path d="M 64 380 Q 160 338 256 380 T 448 380 L 448 400 Q 352 358 256 400 T 64 400 Z" fill="#FFFFFF" opacity="0.3" />
+
+  <!-- Stylized "P" Emblem -->
+  <path d="M 180 135 L 295 135 C 342 135 372 160 372 198 C 372 236 342 262 295 262 L 235 262 L 235 365 L 180 365 Z M 235 180 L 235 218 L 288 218 C 308 218 318 210 318 199 C 318 188 308 180 288 180 Z" fill="#FFFFFF" />
+
+  <!-- Beacon / Pin Marker Gold Dot -->
+  <circle cx="372" cy="125" r="28" fill="url(#goldAccent512)" stroke="#FFFFFF" stroke-width="8" />
+</svg>
