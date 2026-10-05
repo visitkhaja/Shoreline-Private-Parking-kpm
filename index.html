@@ -1,80 +1,1148 @@
-<!-- ==================== UPI PAYMENT / SCAN & PAY SECTION ==================== -->
-<section class="section payment-section" id="payment" aria-labelledby="payment-title">
-  <div class="container">
-    <div class="section-header text-center">
-      <span class="section-tag">Instant UPI Payment</span>
-      <h2 class="section-title" id="payment-title">Scan &amp; Pay via UPI / Google Pay / PhonePe</h2>
-      <p class="section-desc">Quick, contactless parking fee payments for visitors and stall holders. Scan using any UPI app or pay directly via our official UPI ID.</p>
-    </div>
+<!DOCTYPE html>
+<!--
+================================================================================
+  BUSINESS: Shoreline Private Parking (தனியார் வாகனக் காப்பகம்)
+  LOCATION: Kayalpattinam Beach, Tamil Nadu, India
+  PROJECT:  Official Single-Page Static Website
+  UPDATED:  September 2026
+  
+  ACTIVE ASSETS INSTALLED:
+  ------------------------------------------------------------------------------
+  - Official Billboard / Aerial View: assets/images/shoreline-banner.jpg
+  - Approach Road & Entrance Gate:    assets/images/shoreline-entrance.jpg
+  - Video Tour 1 (Parking Lot Walk):  assets/videos/shoreline-tour-01.mp4
+  - Video Tour 2 (Entrance & Fence):  assets/videos/shoreline-tour-02.mp4
+  - Vector Brand Logo:                assets/images/logo.svg
+  - Hotline Phone 1:                  +91 99945 48247
+  - Hotline Phone 2:                  +91 97897 81673
+================================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Primary Meta Tags -->
+  <title>Shoreline Private Parking | Kayalpattinam Beach | 60+ Cars Capacity</title>
+  <meta name="title" content="Shoreline Private Parking | Kayalpattinam Beach | 60+ Cars Capacity">
+  <meta name="description" content="Secure, gated beachside parking at Kayalpattinam Beach. 60+ cars capacity, 24x7 CCTV surveillance, EV charging stations, car wash service, café & snacks, and clean pay & use toilets. Call 99945 48247 or 97897 81673.">
+  <meta name="keywords" content="Shoreline Private Parking, Kayalpattinam beach parking, தனியார் வாகனக் காப்பகம், Kayalpattinam beach car parking, EV charging Kayalpattinam, beach car wash, secure parking Tamil Nadu">
+  <meta name="author" content="Shoreline Private Parking">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.shorelineprivateparking.com/">
 
-    <div class="payment-card-wrap">
-      <div class="payment-card">
-        <div class="payment-card__badge">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-          <span>Verified Merchant QR &bull; Shoreline Private Parking</span>
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.shorelineprivateparking.com/">
+  <meta property="og:title" content="Shoreline Private Parking | Kayalpattinam Beach">
+  <meta property="og:description" content="60+ Cars Capacity • Spacious • Safe • Secure. 24x7 CCTV, EV Charging, Car Wash, Café & Toilets at Kayalpattinam Beach.">
+  <meta property="og:image" content="assets/images/shoreline-banner.jpg">
+  <meta property="og:site_name" content="Shoreline Private Parking">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://www.shorelineprivateparking.com/">
+  <meta name="twitter:title" content="Shoreline Private Parking | Kayalpattinam Beach">
+  <meta name="twitter:description" content="60+ Cars Capacity. 24x7 CCTV, EV Charging, Car Wash, Café & Toilets. Park Safely • Enjoy Freely.">
+  <meta name="twitter:image" content="assets/images/shoreline-banner.jpg">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo-512.png">
+  <meta name="theme-color" content="#0A2540">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- JSON-LD LocalBusiness & ParkingFacility Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ParkingFacility",
+    "name": "Shoreline Private Parking",
+    "alternateName": "தனியார் வாகனக் காப்பகம் - Shoreline Kayalpattinam",
+    "image": "https://www.shorelineprivateparking.com/assets/images/shoreline-banner.jpg",
+    "logo": "https://www.shorelineprivateparking.com/assets/images/logo.svg",
+    "@id": "https://www.shorelineprivateparking.com/#facility",
+    "url": "https://www.shorelineprivateparking.com",
+    "telephone": "+91-9994548247",
+    "priceRange": "₹50 - ₹1200",
+    "currenciesAccepted": "INR",
+    "paymentAccepted": "Cash, UPI, Google Pay, PhonePe, Paytm, Cards",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Beach Road, Kayalpattinam Beach",
+      "addressLocality": "Kayalpattinam",
+      "addressRegion": "Tamil Nadu",
+      "postalCode": "628204",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 8.5683,
+      "longitude": 78.1362
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    ],
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "60+ Cars Capacity", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "24x7 CCTV Surveillance Security", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "EV Charging Stations", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Car Wash Service", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Café & Refreshing Snacks", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Clean Pay & Use Toilets", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Daily & Monthly Parking Passes", "value": true }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Accessible Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Top Announcement Bar with Real Hotline Numbers -->
+  <aside class="status-bar" aria-label="Facility status">
+    <div class="container status-bar__inner">
+      <span class="status-bar__badge"><span class="status-bar__dot" aria-hidden="true"></span> Open 24/7</span>
+      <span class="status-bar__text">
+        📍 <strong>Kayalpattinam Beach:</strong> 60+ Cars Capacity &bull; Park Safely, Enjoy Freely!
+      </span>
+      <div class="status-bar__contact-links">
+        <a href="tel:+919994548247" class="status-bar__phone">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>99945 48247</span>
+        </a>
+        <span class="sep" aria-hidden="true">&bull;</span>
+        <a href="tel:+919789781673" class="status-bar__phone">
+          <span>97897 81673</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sticky Main Header -->
+  <header class="site-header" id="site-header">
+    <div class="container header__inner">
+      <!-- Logo Branding -->
+      <a href="#hero" class="brand" aria-label="Shoreline Private Parking Kayalpattinam - Home">
+        <img src="assets/images/logo.svg" alt="Shoreline Private Parking Logo - Kayalpattinam Beach" width="240" height="52" class="brand__logo">
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" id="nav-menu" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#about" class="nav-link">Amenities</a></li>
+          <li class="nav-item"><a href="#rates" class="nav-link">Rates &amp; Plans</a></li>
+          <li class="nav-item"><a href="#booking" class="nav-link">Reserve Stall</a></li>
+          <li class="nav-item"><a href="#payment" class="nav-link">Pay Online</a></li>
+          <li class="nav-item"><a href="#gallery" class="nav-link">Photos &amp; Videos</a></li>
+          <li class="nav-item"><a href="#location" class="nav-link">Location &amp; Map</a></li>
+          <li class="nav-item"><a href="#faq" class="nav-link">FAQ</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Action Group -->
+      <div class="header__actions">
+        <!-- Direct WhatsApp Quick Chat -->
+        <a href="https://wa.me/919994548247?text=Hello%20Shoreline%20Private%20Parking%2C%20I%20want%20to%20enquire%20about%20parking%20at%20Kayalpattinam%20Beach." target="_blank" rel="noopener noreferrer" class="btn-whatsapp" aria-label="Chat on WhatsApp">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.18-.54-1.745-.719-2.883-2.5-2.97-2.617-.087-.116-.708-.941-.708-1.792 0-.852.447-1.27.607-1.443.16-.174.348-.217.464-.217.116 0 .232.001.333.006.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+          <span>WhatsApp</span>
+        </a>
+
+        <!-- Call Button -->
+        <a href="tel:+919994548247" class="btn-phone" aria-label="Call Shoreline Parking Enquiry">
+          <svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="phone-label">Call Now</span>
+        </a>
+
+        <!-- Book Now CTA -->
+        <a href="#booking" class="btn btn--primary btn--header">
+          <span>Reserve Spot</span>
+          <svg class="icon icon-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+
+        <!-- Mobile Navigation Hamburger -->
+        <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Landmark -->
+  <main id="main-content">
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="hero__bg-wrap">
+        <picture>
+          <source srcset="assets/images/shoreline-banner.jpg" type="image/jpeg">
+          <img src="assets/images/shoreline-banner.jpg" alt="Aerial view of Shoreline Private Parking right beside Kayalpattinam Beach" class="hero__bg-img" fetchpriority="high">
+        </picture>
+        <div class="hero__overlay" aria-hidden="true"></div>
+      </div>
+
+      <div class="container hero__content">
+        <div class="hero__badge">
+          <svg class="icon icon-shield" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>📍 Kayalpattinam Beach &bull; தனியார் வாகனக் காப்பகம்</span>
         </div>
 
-        <div class="payment-card__content">
-          <!-- QR Code Frame -->
-          <div class="payment-qr-frame">
-            <img src="assets/images/payment-qr.png" alt="Official UPI Payment QR Code for Shoreline Private Parking" class="payment-qr-img" width="240" height="252" loading="lazy">
-            <span class="payment-qr-caption">Scan with any UPI App</span>
+        <h1 class="hero__title" id="hero-title">
+          Shoreline Private Parking <br class="hero__br">
+          <span class="text-gradient">60+ Cars Capacity &bull; Park Safely, Enjoy Freely</span>
+        </h1>
+
+        <p class="hero__subtitle">
+          Spacious, safe, and secure private beach parking located right on Kayalpattinam Beach. Complete with 24x7 CCTV surveillance, high-speed EV charging, car wash service, café snacks, and clean restrooms for families and tourists.
+        </p>
+
+        <div class="hero__cta-group">
+          <a href="#booking" class="btn btn--primary btn--lg">
+            <span>Book Your Stall Online</span>
+            <svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="https://wa.me/919994548247?text=Hello%20Shoreline%20Parking%2C%20I%20would%20like%20to%20reserve%20a%20car%20parking%20spot%20at%20Kayalpattinam%20Beach." target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp-lg">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.18-.54-1.745-.719-2.883-2.5-2.97-2.617-.087-.116-.708-.941-.708-1.792 0-.852.447-1.27.607-1.443.16-.174.348-.217.464-.217.116 0 .232.001.333.006.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+            <span>Book via WhatsApp</span>
+          </a>
+          <a href="tel:+919994548247" class="btn btn--ghost btn--lg">
+            <svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Call: 99945 48247</span>
+          </a>
+        </div>
+
+        <!-- 6 Core Highlights (Direct from Billboard) -->
+        <div class="hero__features-strip" aria-label="Official facility amenities">
+          <div class="feature-item">
+            <div class="feature-item__icon-wrap">
+              <svg class="icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            </div>
+            <div class="feature-item__content">
+              <strong>60+ Cars Capacity</strong>
+              <span>Spacious shaded bays &amp; open stalls</span>
+            </div>
           </div>
 
-          <!-- Payment Details & Actions -->
-          <div class="payment-details">
-            <div class="payment-supported-apps">
-              <span class="apps-label">Accepted UPI Apps:</span>
-              <div class="apps-badges">
-                <span class="app-chip">Google Pay</span>
-                <span class="app-chip">PhonePe</span>
-                <span class="app-chip">Paytm</span>
-                <span class="app-chip">BHIM UPI</span>
-                <span class="app-chip">Cred</span>
-                <span class="app-chip">Any Bank App</span>
-              </div>
+          <div class="feature-item">
+            <div class="feature-item__icon-wrap">
+              <svg class="icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line><circle cx="12" cy="10" r="3"></circle></svg>
             </div>
-
-            <!-- UPI ID Copy Box -->
-            <div class="upi-id-box">
-              <span class="upi-id-label">Official Facility UPI ID:</span>
-              <div class="upi-id-input-wrap">
-                <input type="text" value="visitkhaja@okicici" readonly class="upi-id-input" id="upi-id-field" aria-label="Official UPI ID">
-                <button type="button" class="btn btn--copy-upi" id="copy-upi-btn" aria-label="Copy UPI ID to clipboard">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                  <span>Copy</span>
-                </button>
-              </div>
+            <div class="feature-item__content">
+              <strong>24x7 CCTV Surveillance</strong>
+              <span>Gated perimeter with round-the-clock guards</span>
             </div>
+          </div>
 
-            <!-- Bank Info -->
-            <div class="bank-info-box">
-              <div class="bank-info-item">
-                <span class="bank-info-label">Receiving Bank:</span>
-                <strong>Central Bank of India</strong>
-              </div>
-              <div class="bank-info-item">
-                <span class="bank-info-label">Account ending:</span>
-                <strong>...4085</strong>
-              </div>
+          <div class="feature-item">
+            <div class="feature-item__icon-wrap">
+              <svg class="icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
             </div>
+            <div class="feature-item__content">
+              <strong>EV Charging Stations</strong>
+              <span>High-speed fast charging while you relax</span>
+            </div>
+          </div>
 
-            <!-- CTA Actions -->
-            <div class="payment-actions">
-              <!-- One-Tap Pay on Mobile -->
-              <a href="upi://pay?pa=visitkhaja@okicici&pn=Shoreline%20Private%20Parking&cu=INR" class="btn btn--primary btn--block">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-                <span>Tap to Pay via UPI App (Mobile Only)</span>
-              </a>
-              <!-- WhatsApp Screenshot Dispatch -->
-              <a href="https://wa.me/919994548247?text=Hello%20Shoreline%20Parking%2C%20I%20have%20completed%20the%20UPI%20payment%20to%20visitkhaja%40okicici.%20Kindly%20confirm%20my%20parking%20pass." target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp-lg btn--block">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.18-.54-1.745-.719-2.883-2.5-2.97-2.617-.087-.116-.708-.941-.708-1.792 0-.852.447-1.27.607-1.443.16-.174.348-.217.464-.217.116 0 .232.001.333.006.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
-                <span>Send Payment Screenshot via WhatsApp</span>
-              </a>
+          <div class="feature-item">
+            <div class="feature-item__icon-wrap">
+              <svg class="icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="feature-item__content">
+              <strong>Car Wash &amp; Café</strong>
+              <span>Restrooms, detailing, and hot tea/snacks</span>
             </div>
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- ==================== AMENITIES SECTION ==================== -->
+    <section class="section about-section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Facility Amenities</span>
+          <h2 class="section-title" id="about-title">Everything You Need for a Relaxed Beach Visit</h2>
+          <p class="section-desc">Located directly next to the waves of Kayalpattinam Beach, our facility combines premium vehicle security with thoughtful guest conveniences.</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- 1. 60+ Cars Capacity -->
+          <article class="feature-card">
+            <div class="feature-card__icon-box">
+              <svg class="icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3 class="feature-card__title">60+ Cars Capacity</h3>
+            <p class="feature-card__text">Generous parking layout with dedicated covered roofing shades and open parking bays. Smooth entry, wide turning radiuses, and zero crowding.</p>
+          </article>
+
+          <!-- 2. 24x7 CCTV Surveillance -->
+          <article class="feature-card">
+            <div class="feature-card__icon-box">
+              <svg class="icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h3 class="feature-card__title">24x7 CCTV Surveillance</h3>
+            <p class="feature-card__text">Enclosed fencing perimeter with high-resolution day and night vision cameras. Constant security guard presence ensures your vehicle stays 100% safe.</p>
+          </article>
+
+          <!-- 3. EV Charging Stations -->
+          <article class="feature-card">
+            <div class="feature-card__icon-box">
+              <svg class="icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <h3 class="feature-card__title">EV Charging Stations</h3>
+            <p class="feature-card__text">Dedicated high-power EV charging points. Recharge your electric car or 2-wheeler easily while enjoying the beach boardwalk and sea breeze.</p>
+          </article>
+
+          <!-- 4. Car Wash Service -->
+          <article class="feature-card">
+            <div class="feature-card__icon-box">
+              <svg class="icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+            </div>
+            <h3 class="feature-card__title">Car Wash &amp; Detailing</h3>
+            <p class="feature-card__text">On-site freshwater car wash service. Remove coastal salt residue, beach sand, and road grime so your car drives away sparkling clean.</p>
+          </article>
+
+          <!-- 5. Café & Snacks -->
+          <article class="feature-card">
+            <div class="feature-card__icon-box">
+              <svg class="icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+            </div>
+            <h3 class="feature-card__title">Café &amp; Snacks</h3>
+            <p class="feature-card__text">Grab hot tea, refreshing coffee, cold beverages, and tasty light beach snacks right at our shaded parking plaza before or after your swim.</p>
+          </article>
+
+          <!-- 6. Pay & Use Toilets -->
+          <article class="feature-card">
+            <div class="feature-card__icon-box">
+              <svg class="icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="feature-card__title">Pay &amp; Use Clean Toilets</h3>
+            <p class="feature-card__text">Spotless, well-maintained restrooms and washing areas for men, women, and families. Fresh water wash-off stations after playing on the sand.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== GALLERY & VIDEO TOUR SECTION ==================== -->
+    <section class="section gallery-section bg-light" id="gallery" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Authentic Photos &amp; Videos</span>
+          <h2 class="section-title" id="gallery-title">Explore Shoreline Private Parking</h2>
+          <p class="section-desc">Real photos and recorded walkthrough videos of our Kayalpattinam Beach facility, approach road, and security setup. Click any thumbnail below to launch our interactive high-definition viewer.</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="gallery-filters" role="tablist" aria-label="Gallery category filters">
+          <button type="button" class="gallery-filter-btn active" data-filter="all" role="tab" aria-selected="true">All (8)</button>
+          <button type="button" class="gallery-filter-btn" data-filter="video" role="tab" aria-selected="false">🎥 Video Tours (2)</button>
+          <button type="button" class="gallery-filter-btn" data-filter="facility" role="tab" aria-selected="false">Facility &amp; Billboard</button>
+          <button type="button" class="gallery-filter-btn" data-filter="entrance" role="tab" aria-selected="false">Road &amp; Entrance</button>
+          <button type="button" class="gallery-filter-btn" data-filter="amenities" role="tab" aria-selected="false">Amenities &amp; EV</button>
+        </div>
+
+        <!-- Gallery Grid with Real Assets -->
+        <div class="gallery-grid" id="gallery-grid">
+
+          <!-- 1. Real Image: Official Billboard & Aerial View -->
+          <div class="gallery-item" data-category="facility" data-type="image" data-src="assets/images/shoreline-banner.jpg" data-caption="Official Shoreline Private Parking Billboard at Kayalpattinam Beach with 60+ Cars Aerial View, Amenities & Hotline." tabindex="0" role="button" aria-label="View photo: Official billboard and aerial view">
+            <div class="gallery-item__thumb-wrap">
+              <img src="assets/images/shoreline-banner.jpg" alt="Official Shoreline Private Parking billboard and aerial parking view" class="gallery-item__img" loading="lazy">
+              <div class="gallery-item__overlay">
+                <span class="gallery-item__badge">Official Banner &amp; Aerial</span>
+                <span class="gallery-item__icon-zoom">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                </span>
+                <span class="gallery-item__title">Facility Overview (60+ Cars)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Real Image: Entrance Road & Compound -->
+          <div class="gallery-item" data-category="entrance" data-type="image" data-src="assets/images/shoreline-entrance.jpg" data-caption="Approach road leading to Shoreline Private Parking compound and Kayalpattinam Beach." tabindex="0" role="button" aria-label="View photo: Approach road and entrance gate">
+            <div class="gallery-item__thumb-wrap">
+              <img src="assets/images/shoreline-entrance.jpg" alt="Approach road and entrance gate of Shoreline Private Parking at Kayalpattinam Beach" class="gallery-item__img" loading="lazy">
+              <div class="gallery-item__overlay">
+                <span class="gallery-item__badge">Entrance Road</span>
+                <span class="gallery-item__icon-zoom">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                </span>
+                <span class="gallery-item__title">Beach Approach Road &amp; Gate</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Real Video 1: On-site Tour -->
+          <div class="gallery-item gallery-item--video" data-category="video" data-type="video" data-src="assets/videos/shoreline-tour-01.mp4" data-poster="assets/videos/shoreline-tour-01-poster.jpg" data-caption="Live Video Walkthrough 1: Touring the Shoreline Private Parking facility, stalls, and shade roofing." tabindex="0" role="button" aria-label="Watch video tour 1: Parking lot walkthrough">
+            <div class="gallery-item__thumb-wrap">
+              <img src="assets/videos/shoreline-tour-01-poster.jpg" alt="Video preview of parking walkthrough at Shoreline Private Parking" class="gallery-item__img" loading="lazy">
+              <div class="gallery-item__overlay">
+                <span class="gallery-item__badge badge-video">🎥 Video Tour 1</span>
+                <span class="gallery-item__icon-play">
+                  <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </span>
+                <span class="gallery-item__title">Facility Walkthrough Video</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Real Video 2: Entrance & Fence Tour -->
+          <div class="gallery-item gallery-item--video" data-category="video" data-type="video" data-src="assets/videos/shoreline-tour-02.mp4" data-poster="assets/videos/shoreline-tour-02-poster.jpg" data-caption="Live Video Walkthrough 2: Entrance gate, perimeter security fence, and vehicle entry path." tabindex="0" role="button" aria-label="Watch video tour 2: Entrance and perimeter fence">
+            <div class="gallery-item__thumb-wrap">
+              <img src="assets/videos/shoreline-tour-02-poster.jpg" alt="Video preview of entrance gate and security perimeter" class="gallery-item__img" loading="lazy">
+              <div class="gallery-item__overlay">
+                <span class="gallery-item__badge badge-video">🎥 Video Tour 2</span>
+                <span class="gallery-item__icon-play">
+                  <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </span>
+                <span class="gallery-item__title">Entrance &amp; Perimeter Security</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. EV Fast Charging -->
+          <div class="gallery-item" data-category="amenities" data-type="image" data-src="assets/images/gallery-03.jpg" data-caption="Dedicated EV Charging bays compatible with all electric vehicles and 2-wheelers." tabindex="0" role="button" aria-label="View photo: EV Fast Charging Stations">
+            <div class="gallery-item__thumb-wrap">
+              <img src="assets/images/gallery-03.jpg" alt="EV Charging Stations at Shoreline Parking" class="gallery-item__img" loading="lazy">
+              <div class="gallery-item__overlay">
+                <span class="gallery-item__badge">EV Charging</span>
+                <span class="gallery-item__icon-zoom">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </span>
+                <span class="gallery-item__title">Electric Vehicle Fast Charging</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Covered Roofing Sheds -->
+          <div class="gallery-item" data-category="facility" data-type="image" data-src="assets/images/gallery-04.jpg" data-caption="Covered shed bays protecting cars from direct sun, heat, and coastal sea-mist." tabindex="0" role="button" aria-label="View photo: Covered parking sheds">
+            <div class="gallery-item__thumb-wrap">
+              <img src="assets/images/gallery-04.jpg" alt="Covered parking sheds at Shoreline" class="gallery-item__img" loading="lazy">
+              <div class="gallery-item__overlay">
+                <span class="gallery-item__badge">Shaded Bays</span>
+                <span class="gallery-item__icon-zoom">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </span>
+                <span class="gallery-item__title">Covered Sun-Protected Stalls</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Beach Access & Restrooms -->
+          <div class="gallery-item" data-category="amenities" data-type="image" data-src="assets/images/gallery-01.jpg" data-caption="Direct 1-minute walking pathway straight onto the sand of Kayalpattinam Beach." tabindex="0" role="button" aria-label="View photo: Beach pathway">
+            <div class="gallery-item__thumb-wrap">
+              <img src="assets/images/gallery-01.jpg" alt="Beach walking path directly from Shoreline parking lot" class="gallery-item__img" loading="lazy">
+              <div class="gallery-item__overlay">
+                <span class="gallery-item__badge">Beach Pathway</span>
+                <span class="gallery-item__icon-zoom">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </span>
+                <span class="gallery-item__title">Steps to Kayalpattinam Beach</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. Night Security & Floodlighting -->
+          <div class="gallery-item" data-category="facility" data-type="image" data-src="assets/images/gallery-06.jpg" data-caption="24x7 Night LED illumination and monitored CCTV surveillance cameras." tabindex="0" role="button" aria-label="View photo: Night security and lighting">
+            <div class="gallery-item__thumb-wrap">
+              <img src="assets/images/gallery-06.jpg" alt="Night security lighting and CCTV cameras" class="gallery-item__img" loading="lazy">
+              <div class="gallery-item__overlay">
+                <span class="gallery-item__badge">24x7 Security</span>
+                <span class="gallery-item__icon-zoom">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </span>
+                <span class="gallery-item__title">24x7 CCTV &amp; Night Lights</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PRICING / PLANS SECTION ==================== -->
+    <section class="section pricing-section" id="rates" aria-labelledby="pricing-title">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Flexible Plans</span>
+          <h2 class="section-title" id="pricing-title">Simple &amp; Affordable Beach Parking Rates</h2>
+          <p class="section-desc">Guaranteed reserved parking stall, full CCTV security, and access to all facility amenities.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Plan 1: Short Stay / Hourly -->
+          <div class="pricing-card">
+            <div class="pricing-card__header">
+              <h3 class="pricing-card__title">Short Beach Visit</h3>
+              <p class="pricing-card__desc">Ideal for quick ocean walks, sunset sightseeing, or temple visits.</p>
+              <div class="pricing-card__cost">
+                <span class="currency">₹</span>
+                <span class="amount">50</span>
+                <span class="period">/ 3 hours</span>
+              </div>
+              <span class="pricing-card__note">Fast check-in &bull; ₹20/hr thereafter</span>
+            </div>
+
+            <ul class="pricing-card__features" aria-label="Short stay features">
+              <li><svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Guaranteed stall inside gated perimeter</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 24x7 CCTV &amp; guard surveillance</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Access to Pay &amp; Use clean toilets</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Café &amp; beverage counter access</li>
+              <li class="disabled"><svg class="cross-icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Overnight holding</li>
+            </ul>
+
+            <div class="pricing-card__footer">
+              <button type="button" class="btn btn--outline btn--block select-plan-btn" data-plan="hourly" data-plan-name="Short Beach Visit (₹50 / 3 hrs)">
+                Select Short Stay
+              </button>
+            </div>
+          </div>
+
+          <!-- Plan 2: Full Beach Day Pass (Popular) -->
+          <div class="pricing-card pricing-card--featured">
+            <div class="pricing-card__badge">Most Popular Choice</div>
+            <div class="pricing-card__header">
+              <h3 class="pricing-card__title">Full Beach Day Pass</h3>
+              <p class="pricing-card__desc">Relax the entire day on the coast with total peace of mind for your car.</p>
+              <div class="pricing-card__cost">
+                <span class="currency">₹</span>
+                <span class="amount">150</span>
+                <span class="period">/ full day</span>
+              </div>
+              <span class="pricing-card__note">Morning to Night &bull; Unlimited in/out</span>
+            </div>
+
+            <ul class="pricing-card__features" aria-label="Full day pass features">
+              <li><svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <strong>Full day reserved stall holding</strong></li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <strong>Unlimited in &amp; out gate privileges</strong></li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Shaded covered bay priority</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Access to EV Charging and Car Wash</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Free cancellation anytime</li>
+            </ul>
+
+            <div class="pricing-card__footer">
+              <button type="button" class="btn btn--primary btn--block select-plan-btn" data-plan="daily" data-plan-name="Full Beach Day Pass (₹150 / day)">
+                Select Day Pass
+              </button>
+            </div>
+          </div>
+
+          <!-- Plan 3: Monthly Pass -->
+          <div class="pricing-card">
+            <div class="pricing-card__header">
+              <h3 class="pricing-card__title">Monthly Pass</h3>
+              <p class="pricing-card__desc">Dedicated spot for daily morning beach walkers, commuters &amp; local residents.</p>
+              <div class="pricing-card__cost">
+                <span class="currency">₹</span>
+                <span class="amount">1,200</span>
+                <span class="period">/ month</span>
+              </div>
+              <span class="pricing-card__note">24/7 Unlimited access &bull; Dedicated stall</span>
+            </div>
+
+            <ul class="pricing-card__features" aria-label="Monthly plan features">
+              <li><svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Dedicated numbered parking stall</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 24/7 unrestricted round-the-clock entry</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Priority access to EV charging bay</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 1 Complimentary monthly exterior car wash</li>
+              <li><svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Direct owner/dispatch hotline</li>
+            </ul>
+
+            <div class="pricing-card__footer">
+              <button type="button" class="btn btn--outline btn--block select-plan-btn" data-plan="monthly" data-plan-name="Monthly Pass (₹1,200 / month)">
+                Select Monthly Pass
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-notice text-center">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span>Need group event, tourist van, or bus parking at Kayalpattinam Beach? Call us directly: <a href="tel:+919994548247">99945 48247</a> or <a href="tel:+919789781673">97897 81673</a>.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BOOKING / RESERVATION FORM ==================== -->
+    <section class="section booking-section" id="booking" aria-labelledby="booking-title">
+      <div class="container">
+        <div class="booking-wrapper">
+          <div class="booking-intro">
+            <span class="section-tag">Direct Gate Booking</span>
+            <h2 class="section-title text-white" id="booking-title">Book Your Kayalpattinam Beach Parking</h2>
+            <p class="text-light">60+ Cars Capacity. Lock in your stall in 30 seconds. Your gate reservation is logged instantly and confirmed on WhatsApp.</p>
+            
+            <div class="booking-guarantees">
+              <div class="guarantee-item">
+                <svg class="icon icon-teal" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span><strong>60+ Cars Capacity:</strong> Guaranteed spot held for your arrival.</span>
+              </div>
+              <div class="guarantee-item">
+                <svg class="icon icon-teal" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span><strong>Instant WhatsApp Confirmation:</strong> Direct gate pass sent to your phone.</span>
+              </div>
+              <div class="guarantee-item">
+                <svg class="icon icon-teal" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span><strong>24x7 Security:</strong> Continuous CCTV monitoring &amp; on-duty attendants.</span>
+              </div>
+            </div>
+
+            <!-- Direct Hotline Call Box -->
+            <div class="phone-reserve-box">
+              <span class="phone-reserve-box__title">Direct Enquiries &amp; Phone Booking:</span>
+              <p class="phone-reserve-box__desc">Call or WhatsApp our team 24 hours a day, 7 days a week:</p>
+              <div class="phone-buttons-group">
+                <a href="tel:+919994548247" class="phone-reserve-box__link">
+                  <svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  <span>99945 48247</span>
+                </a>
+                <a href="tel:+919789781673" class="phone-reserve-box__link">
+                  <svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  <span>97897 81673</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reservation Form Card -->
+          <div class="booking-card">
+            <form id="reservation-form" class="booking-form" novalidate>
+              <div class="form-section-title">
+                <span class="step-num">1</span>
+                <span>Driver &amp; Vehicle Details</span>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="book-name" class="form-label">Full Name <span class="required" aria-hidden="true">*</span></label>
+                  <input type="text" id="book-name" name="fullName" class="form-input" placeholder="e.g. Mohamed Riyaz" required autocomplete="name">
+                  <span class="form-error" id="error-name" role="alert"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="book-phone" class="form-label">Mobile Number (WhatsApp) <span class="required" aria-hidden="true">*</span></label>
+                  <input type="tel" id="book-phone" name="phone" class="form-input" placeholder="e.g. 98765 43210" required autocomplete="tel">
+                  <span class="form-error" id="error-phone" role="alert"></span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="book-vehicle" class="form-label">Vehicle Make &amp; Model <span class="required" aria-hidden="true">*</span></label>
+                  <input type="text" id="book-vehicle" name="vehicleModel" class="form-input" placeholder="e.g. Innova / Swift / Nexon EV" required>
+                  <span class="form-error" id="error-vehicle" role="alert"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="book-plate" class="form-label">Vehicle Registration # <span class="required" aria-hidden="true">*</span></label>
+                  <input type="text" id="book-plate" name="licensePlate" class="form-input form-input--uppercase" placeholder="e.g. TN 69 AB 1234" required>
+                  <span class="form-error" id="error-plate" role="alert"></span>
+                </div>
+              </div>
+
+              <div class="form-section-title">
+                <span class="step-num">2</span>
+                <span>Plan &amp; Schedule</span>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="book-plan" class="form-label">Select Parking Plan <span class="required" aria-hidden="true">*</span></label>
+                  <select id="book-plan" name="parkingPlan" class="form-select" required>
+                    <option value="daily" selected>Full Beach Day Pass (₹150 / day)</option>
+                    <option value="hourly">Short Beach Visit (₹50 / 3 hrs)</option>
+                    <option value="monthly">Monthly Subscription Pass (₹1,200 / mo)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="book-spots" class="form-label">Number of Vehicles</label>
+                  <select id="book-spots" name="spotsCount" class="form-select">
+                    <option value="1">1 Car</option>
+                    <option value="2">2 Cars (Family Group)</option>
+                    <option value="3">3+ Cars / Tourist Van</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="book-arrival" class="form-label">Expected Arrival Date &amp; Time <span class="required" aria-hidden="true">*</span></label>
+                  <input type="datetime-local" id="book-arrival" name="arrivalDateTime" class="form-input" required>
+                  <span class="form-error" id="error-arrival" role="alert"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="book-departure" class="form-label">Expected Departure Date &amp; Time <span class="required" aria-hidden="true">*</span></label>
+                  <input type="datetime-local" id="book-departure" name="departureDateTime" class="form-input" required>
+                  <span class="form-error" id="error-departure" role="alert"></span>
+                </div>
+              </div>
+
+              <!-- Add-ons matching billboard -->
+              <div class="addons-group">
+                <span class="form-label">Special On-Site Services</span>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="addon-ev" name="addonEv" value="true">
+                  <span>Electric Vehicle (EV) Fast Charging bay reservation (+ ₹100)</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="addon-wash" name="addonWash" value="true">
+                  <span>Exterior Beach Sand &amp; Salt Freshwater Car Wash (+ ₹150)</span>
+                </label>
+              </div>
+
+              <!-- Live Price Summary Box -->
+              <div class="price-estimate-box" id="price-estimate-box" aria-live="polite">
+                <div class="price-estimate__label">
+                  <span>Estimated Total:</span>
+                  <small id="price-calculation-breakdown">Calculated based on selected plan</small>
+                </div>
+                <div class="price-estimate__val" id="price-estimate-total">₹150.00</div>
+              </div>
+
+              <!-- Submit button -->
+              <div class="form-group">
+                <button type="submit" class="btn btn--primary btn--block btn--lg" id="submit-booking-btn">
+                  <span>Confirm Parking Reservation</span>
+                  <svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+
+              <p class="form-privacy-note">
+                <svg class="icon icon-xs" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                Instant confirmation code generated with WhatsApp &amp; SMS copy for easy gate entry.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== UPI PAYMENT / SCAN & PAY SECTION ==================== -->
+    <section class="section payment-section" id="payment" aria-labelledby="payment-title">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Instant UPI Payment</span>
+          <h2 class="section-title" id="payment-title">Scan &amp; Pay via UPI / Google Pay / PhonePe</h2>
+          <p class="section-desc">Quick, contactless parking fee payments for visitors and stall holders. Scan using any UPI app or pay directly via our official UPI ID.</p>
+        </div>
+
+        <div class="payment-card-wrap">
+          <div class="payment-card">
+            <div class="payment-card__badge">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <span>Verified Merchant QR &bull; Shoreline Private Parking</span>
+            </div>
+
+            <div class="payment-card__content">
+              <!-- QR Code Frame -->
+              <div class="payment-qr-frame">
+                <img src="assets/images/payment-qr.png" alt="Official UPI Payment QR Code for Shoreline Private Parking" class="payment-qr-img" width="240" height="252" loading="lazy">
+                <span class="payment-qr-caption">Scan with any UPI App</span>
+              </div>
+
+              <!-- Payment Details & Actions -->
+              <div class="payment-details">
+                <div class="payment-supported-apps">
+                  <span class="apps-label">Accepted UPI Apps:</span>
+                  <div class="apps-badges">
+                    <span class="app-chip">Google Pay</span>
+                    <span class="app-chip">PhonePe</span>
+                    <span class="app-chip">Paytm</span>
+                    <span class="app-chip">BHIM UPI</span>
+                    <span class="app-chip">Cred</span>
+                    <span class="app-chip">Any Bank App</span>
+                  </div>
+                </div>
+
+                <!-- UPI ID Copy Box -->
+                <div class="upi-id-box">
+                  <span class="upi-id-label">Official Facility UPI ID:</span>
+                  <div class="upi-id-input-wrap">
+                    <input type="text" value="visitkhaja@okicici" readonly class="upi-id-input" id="upi-id-field" aria-label="Official UPI ID">
+                    <button type="button" class="btn btn--copy-upi" id="copy-upi-btn" aria-label="Copy UPI ID to clipboard">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      <span>Copy</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Bank Info -->
+                <div class="bank-info-box">
+                  <div class="bank-info-item">
+                    <span class="bank-info-label">Receiving Bank:</span>
+                    <strong>Central Bank of India</strong>
+                  </div>
+                  <div class="bank-info-item">
+                    <span class="bank-info-label">Account ending:</span>
+                    <strong>...4085</strong>
+                  </div>
+                </div>
+
+                <!-- CTA Actions -->
+                <div class="payment-actions">
+                  <a href="upi://pay?pa=visitkhaja@okicici&pn=Shoreline%20Private%20Parking&cu=INR" class="btn btn--primary btn--block">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                    <span>Tap to Pay via UPI App (Mobile Only)</span>
+                  </a>
+                  <a href="https://wa.me/919994548247?text=Hello%20Shoreline%20Parking%2C%20I%20have%20completed%20the%20UPI%20payment%20to%20visitkhaja%40okicici.%20Kindly%20confirm%20my%20parking%20pass." target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp-lg btn--block">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.18-.54-1.745-.719-2.883-2.5-2.97-2.617-.087-.116-.708-.941-.708-1.792 0-.852.447-1.27.607-1.443.16-.174.348-.217.464-.217.116 0 .232.001.333.006.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+                    <span>Send Payment Screenshot via WhatsApp</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== LOCATION & MAP SECTION ==================== -->
+    <section class="section location-section bg-light" id="location" aria-labelledby="location-title">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Beach Location</span>
+          <h2 class="section-title" id="location-title">Visit Us at Kayalpattinam Beach</h2>
+          <p class="section-desc">Located right along the beach approach road in Kayalpattinam, Tamil Nadu.</p>
+        </div>
+
+        <div class="location-grid">
+          <!-- Location Details Card -->
+          <div class="location-card">
+            <h3 class="location-card__title">Shoreline Private Parking (தனியார் வாகனக் காப்பகம்)</h3>
+            
+            <div class="location-info-list">
+              <div class="info-row">
+                <svg class="icon icon-teal" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <div>
+                  <strong>Address</strong>
+                  <address>
+                    Beach Road, Kayalpattinam Beach<br>
+                    Kayalpattinam, Thoothukudi District<br>
+                    Tamil Nadu — 628204, India
+                  </address>
+                </div>
+              </div>
+
+              <div class="info-row">
+                <svg class="icon icon-teal" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <div>
+                  <strong>Operating Hours</strong>
+                  <p>Open 24 Hours / 7 Days a Week<br>
+                  <small class="text-muted">Security guards &amp; staff on duty round-the-clock</small></p>
+                </div>
+              </div>
+
+              <div class="info-row">
+                <svg class="icon icon-teal" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <div>
+                  <strong>Enquiry Hotlines</strong>
+                  <p>
+                    <a href="tel:+919994548247" class="link-phone">+91 99945 48247</a> &bull; 
+                    <a href="tel:+919789781673" class="link-phone">+91 97897 81673</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="proximity-card">
+              <h4>Direct Walking Distance:</h4>
+              <ul class="proximity-list">
+                <li><span>🏖️ Kayalpattinam Sandy Beach:</span> <strong>Under 1 min walk (Direct Access)</strong></li>
+                <li><span>☕ Onsite Shoreline Café &amp; Snacks:</span> <strong>On premises</strong></li>
+                <li><span>🚻 Clean Pay &amp; Use Restrooms:</span> <strong>On premises</strong></li>
+              </ul>
+            </div>
+
+            <div class="location-btn-group">
+              <a href="https://maps.google.com/?q=Kayalpattinam+Beach+Tamil+Nadu" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block">
+                <span>Open in Google Maps / Navigation</span>
+                <svg class="icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+              <a href="https://wa.me/919994548247?text=Hi%2C%20please%20send%20me%20the%20Google%20Map%20location%20of%20Shoreline%20Private%20Parking%20Kayalpattinam." target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp btn--block">
+                <span>Request Location on WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Embedded Map Frame -->
+          <div class="location-map-wrap">
+            <iframe 
+              src="https://maps.google.com/maps?q=Kayalpattinam%20Beach,%20Tamil%20Nadu&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+              class="map-iframe" 
+              title="Shoreline Private Parking Kayalpattinam Beach Map" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade" 
+              allowfullscreen>
+            </iframe>
+            <div class="map-overlay-badge">
+              <strong>📍 Shoreline Private Parking</strong>
+              <span>Kayalpattinam Beach Road</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ ACCORDION SECTION ==================== -->
+    <section class="section faq-section" id="faq" aria-labelledby="faq-title">
+      <div class="container container--narrow">
+        <div class="section-header text-center">
+          <span class="section-tag">Frequently Asked Questions</span>
+          <h2 class="section-title" id="faq-title">Got Questions? We Have Answers.</h2>
+          <p class="section-desc">Details regarding security, amenities, car capacity, and vehicle entry.</p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary class="faq-question">
+              <span>What is the capacity of Shoreline Private Parking at Kayalpattinam Beach?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Our facility accommodates <strong>60+ cars simultaneously</strong> with both shaded roof bays and open spacious stalls. It also accommodates tourist tempo travellers, vans, and bikes.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Are clean restrooms and toilets available on premises?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Yes! We have clean, hygienic <strong>Pay &amp; Use Toilets</strong> and fresh water wash areas specifically designed for tourists and families visiting Kayalpattinam Beach.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Can I charge my Electric Vehicle (EV) here?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Yes, we have installed dedicated <strong>EV Charging Stations</strong> on-site. You can plug in your EV or electric two-wheeler and relax on the beach while your vehicle charges.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>How does the Car Wash Service work?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Beach winds often coat vehicles in salty air and sand. Our on-site wash team can thoroughly rinse, wash, and detail your car with clean fresh water while you are at the beach.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>How do I reach the team for instant booking or questions?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="faq-answer">
+              <p>You can directly call our enquiry hotlines at <strong>99945 48247</strong> or <strong>97897 81673</strong>, or click our WhatsApp button to chat with our staff in seconds.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Get In Touch</span>
+          <h2 class="section-title" id="contact-title">Contact Shoreline Private Parking</h2>
+          <p class="section-desc">Reach our Kayalpattinam Beach desk directly for bookings, group packages, or assistance.</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Info Column -->
+          <div class="contact-card">
+            <h3>Contact Information</h3>
+            <p>Our attendants and security staff are present on-site 24 hours a day.</p>
+
+            <ul class="contact-details">
+              <li>
+                <div class="icon-wrap">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div>
+                  <strong>Enquiry Hotlines:</strong>
+                  <a href="tel:+919994548247" class="contact-link">+91 99945 48247</a><br>
+                  <a href="tel:+919789781673" class="contact-link">+91 97897 81673</a>
+                </div>
+              </li>
+
+              <li>
+                <div class="icon-wrap">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.18-.54-1.745-.719-2.883-2.5-2.97-2.617-.087-.116-.708-.941-.708-1.792 0-.852.447-1.27.607-1.443.16-.174.348-.217.464-.217.116 0 .232.001.333.006.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+                </div>
+                <div>
+                  <strong>WhatsApp Chat:</strong>
+                  <a href="https://wa.me/919994548247?text=Hello%20Shoreline%20Private%20Parking%2C%20I%20have%20an%20enquiry." target="_blank" rel="noopener noreferrer" class="contact-link">Chat on +91 99945 48247</a>
+                </div>
+              </li>
+
+              <li>
+                <div class="icon-wrap">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div>
+                  <strong>Location:</strong>
+                  <span>Beach Road, Kayalpattinam Beach, Tamil Nadu 628204</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Quick Message Form -->
+          <div class="contact-card">
+            <h3>Send an Online Enquiry</h3>
+            <form id="contact-inquiry-form" class="inquiry-form" novalidate>
+              <div class="form-group">
+                <label for="contact-name" class="form-label">Your Name <span class="required" aria-hidden="true">*</span></label>
+                <input type="text" id="contact-name" name="name" class="form-input" placeholder="e.g. Mohamed" required>
+                <span class="form-error" id="error-contact-name" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-phone" class="form-label">Mobile Number <span class="required" aria-hidden="true">*</span></label>
+                <input type="tel" id="contact-phone" name="phone" class="form-input" placeholder="e.g. 9876543210" required>
+                <span class="form-error" id="error-contact-phone" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message" class="form-label">Message / Enquiry <span class="required" aria-hidden="true">*</span></label>
+                <textarea id="contact-message" name="message" rows="3" class="form-textarea" placeholder="How many spots do you need, or what time will you arrive?" required></textarea>
+                <span class="form-error" id="error-contact-message" role="alert"></span>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--block">
+                <span>Send WhatsApp Enquiry</span>
+                <svg class="icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <div class="footer__brand-col">
+        <a href="#hero" class="brand" aria-label="Shoreline Private Parking Kayalpattinam">
+          <img src="assets/images/logo.svg" alt="Shoreline Private Parking - Kayalpattinam" width="220" height="48" class="footer__logo">
+        </a>
+        <p class="footer__about">Shoreline Private Parking (தனியார் வாகனக் காப்பகம்). 60+ Cars Capacity directly at Kayalpattinam Beach. 24x7 CCTV Surveillance, EV Fast Charging, Car Wash, Café &amp; Restrooms.</p>
+        <div class="footer__trust-badges">
+          <span class="trust-badge">🔒 24x7 CCTV</span>
+          <span class="trust-badge">🚗 60+ Cars Capacity</span>
+          <span class="trust-badge">⚡ EV Charging</span>
+          <span class="trust-badge">🚻 Clean Restrooms</span>
+        </div>
+      </div>
+
+      <div class="footer__links-col">
+        <h4 class="footer__title">Quick Links</h4>
+        <ul class="footer__nav">
+          <li><a href="#about">Facility Amenities</a></li>
+          <li><a href="#rates">Parking Rates</a></li>
+          <li><a href="#booking">Reserve Stall</a></li>
+          <li><a href="#gallery">Photos &amp; Video Tours</a></li>
+          <li><a href="#location">Kayalpattinam Beach Map</a></li>
+          <li><a href="#faq">Frequently Asked Questions</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__contact-col">
+        <h4 class="footer__title">Beach Location &amp; Hotlines</h4>
+        <address class="footer__address">
+          <strong>Shoreline Private Parking</strong><br>
+          Beach Road, Kayalpattinam Beach<br>
+          Tamil Nadu — 628204, India<br>
+          <a href="tel:+919994548247" class="footer__link">+91 99945 48247</a><br>
+          <a href="tel:+919789781673" class="footer__link">+91 97897 81673</a>
+        </address>
+        <span class="footer__hours">Facility Open 24/7 &bull; Attendants On-Duty</span>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p class="footer__copyright">&copy; 2026 Shoreline Private Parking &bull; Kayalpattinam Beach. All rights reserved.</p>
+        <div class="footer__legal">
+          <span>Park Safely &bull; Enjoy Freely</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== ACCESSIBLE LIGHTBOX MODAL ==================== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Media Preview" aria-hidden="true">
+    <div class="lightbox__backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox__dialog">
+      <!-- Close Button -->
+      <button type="button" class="lightbox__close" id="lightbox-close" aria-label="Close Lightbox (Press Escape)">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+
+      <!-- Navigation Arrows -->
+      <button type="button" class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Previous item (Left Arrow)">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <button type="button" class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Next item (Right Arrow)">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+      <!-- Media Content Target -->
+      <div class="lightbox__media" id="lightbox-media"></div>
+
+      <!-- Caption & Counter -->
+      <div class="lightbox__meta">
+        <p class="lightbox__caption" id="lightbox-caption"></p>
+        <span class="lightbox__counter" id="lightbox-counter"></span>
+      </div>
     </div>
   </div>
-</section>
+
+  <!-- ==================== BOOKING CONFIRMATION MODAL ==================== -->
+  <div class="modal" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="modal-confirm-title" aria-hidden="true">
+    <div class="modal__backdrop" id="modal-backdrop"></div>
+    <div class="modal__dialog">
+      <button type="button" class="modal__close" id="booking-modal-close" aria-label="Close confirmation dialog">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      
+      <div class="modal__content" id="modal-receipt-content"></div>
+    </div>
+  </div>
+
+  <!-- ==================== BACK TO TOP BUTTON ==================== -->
+  <button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top of page">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

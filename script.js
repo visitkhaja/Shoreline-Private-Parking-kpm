@@ -363,6 +363,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const renderReceiptModal = (data) => {
     if (!receiptContainer || !bookingModal) return;
 
+    const rawAmount = (data.total || '').replace(/[^\d.]/g, '') || '150';
+    const upiPayUri = `upi://pay?pa=visitkhaja@okicici&pn=Shoreline%20Private%20Parking&am=${encodeURIComponent(rawAmount)}&cu=INR&tn=Booking-${encodeURIComponent(data.ref)}`;
+
     const whatsappMessage = encodeURIComponent(
       `*Shoreline Private Parking - Booking Confirmation*\n` +
       `Pass Ref: ${data.ref}\n` +
@@ -374,6 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `Departure: ${data.departure}\n` +
       `Services: ${data.addons}\n` +
       `Total: ${data.total}\n` +
+      `Payment UPI ID: visitkhaja@okicici (Central Bank of India)\n` +
       `Location: Kayalpattinam Beach, Tamil Nadu`
     );
 
@@ -402,12 +406,36 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
 
+        <!-- Official Payment QR Section -->
+        <div class="receipt-payment-qr-box">
+          <div class="receipt-qr-header">
+            <span class="qr-title">Scan & Pay via UPI</span>
+            <span class="qr-subtitle">Google Pay &bull; PhonePe &bull; Paytm &bull; BHIM</span>
+          </div>
+          <div class="receipt-qr-img-wrapper">
+            <img src="assets/images/payment-qr.png" alt="Scan to pay parking pass via UPI" class="receipt-qr-img" width="175" height="184">
+          </div>
+          <div class="receipt-upi-id-badge">
+            <span class="upi-label">UPI ID:</span>
+            <span class="upi-val">visitkhaja@okicici</span>
+            <button type="button" class="btn-copy-sm" id="modal-copy-upi-btn" title="Copy UPI ID to clipboard">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <div class="receipt-bank-note">Central Bank of India &bull; A/C ending 4085</div>
+          <a href="${upiPayUri}" class="btn--upi-pay-now">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span>Pay ${data.total} via UPI App (Mobile)</span>
+          </a>
+        </div>
+
         <div class="receipt-barcode">
           ||| | ||||| || |||||| | ||| |||| | |||
           <div style="font-size: 0.72rem; letter-spacing: 1px; margin-top: 4px;">SHOW AT KAYALPATTINAM BEACH ENTRANCE</div>
         </div>
 
-        <div class="receipt-actions" style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="receipt-actions">
           <a href="https://wa.me/919994548247?text=${whatsappMessage}" target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp-lg btn--block">
             <span>Send Pass to WhatsApp</span>
           </a>
@@ -418,6 +446,19 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
     `;
+
+    const modalCopyBtn = document.getElementById('modal-copy-upi-btn');
+    if (modalCopyBtn) {
+      modalCopyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText('visitkhaja@okicici').then(() => {
+          const span = modalCopyBtn.querySelector('span');
+          if (span) {
+            span.textContent = 'Copied!';
+            setTimeout(() => { span.textContent = 'Copy'; }, 2000);
+          }
+        }).catch(() => {});
+      });
+    }
 
     openModal(bookingModal);
   };
@@ -609,4 +650,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* -------------------------------------------------------------------------- */
+  /*  13. STANDALONE UPI ID COPY HANDLER                                        */
+  /* -------------------------------------------------------------------------- */
+  const copyUpiBtn = document.getElementById('copy-upi-btn');
+  if (copyUpiBtn) {
+    copyUpiBtn.addEventListener('click', () => {
+      const upiField = document.getElementById('upi-id-field');
+      const val = upiField ? upiField.value : 'visitkhaja@okicici';
+      navigator.clipboard.writeText(val).then(() => {
+        const span = copyUpiBtn.querySelector('span');
+        if (span) {
+          span.textContent = 'Copied!';
+          setTimeout(() => { span.textContent = 'Copy'; }, 2000);
+        }
+      }).catch(() => {});
+    });
+  }
+
 });
+

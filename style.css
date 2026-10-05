@@ -1570,10 +1570,12 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 2;
   width: 90%;
   max-width: 580px;
+  max-height: 92vh;
+  overflow-y: auto;
   background: #ffffff;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-2xl);
-  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 .modal__close {
   position: absolute;
@@ -1592,16 +1594,16 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--color-border);
 }
 .receipt-card {
-  padding: 36px 32px;
+  padding: 32px 28px;
 }
 .receipt-header {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 .receipt-success-icon {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 14px;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 12px;
   background: #d1fae5;
   color: #059669;
   border-radius: 50%;
@@ -1624,11 +1626,11 @@ h1, h2, h3, h4, h5, h6 {
 .receipt-body {
   border-top: 1px dashed var(--color-border);
   border-bottom: 1px dashed var(--color-border);
-  padding: 18px 0;
-  margin-bottom: 20px;
+  padding: 16px 0;
+  margin-bottom: 18px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   font-size: 0.92rem;
 }
 .receipt-row {
@@ -1638,20 +1640,300 @@ h1, h2, h3, h4, h5, h6 {
 .receipt-row strong {
   color: var(--color-primary-900);
 }
+
+/* Receipt QR Payment Box */
+.receipt-payment-qr-box {
+  background: linear-gradient(145deg, #0f172a, #1e293b);
+  border-radius: var(--radius-lg);
+  padding: 20px 18px;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 18px;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.receipt-qr-header {
+  margin-bottom: 12px;
+}
+.receipt-qr-header .qr-title {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+}
+.receipt-qr-header .qr-subtitle {
+  display: block;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+.receipt-qr-img-wrapper {
+  background: #ffffff;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  display: inline-block;
+  margin: 4px auto 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  line-height: 0;
+}
+.receipt-qr-img {
+  width: 175px;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  border-radius: 4px;
+}
+.receipt-upi-id-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+}
+.receipt-upi-id-badge .upi-label {
+  color: #94a3b8;
+}
+.receipt-upi-id-badge .upi-val {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.4px;
+}
+.receipt-bank-note {
+  font-size: 0.76rem;
+  color: #cbd5e1;
+  margin-bottom: 14px;
+}
+.btn-copy-sm {
+  background: #38bdf8;
+  color: #0f172a;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all var(--transition-fast);
+}
+.btn-copy-sm:hover {
+  background: #7dd3fc;
+  transform: translateY(-1px);
+}
+.btn--upi-pay-now {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+  transition: all var(--transition-fast);
+}
+.btn--upi-pay-now:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+}
+
 .receipt-barcode {
   text-align: center;
   background: #f8fafc;
-  padding: 12px;
+  padding: 10px;
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   letter-spacing: 4px;
   color: #475569;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 .receipt-actions {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  16.5. STANDALONE UPI PAYMENT SECTION                                     */
+/* -------------------------------------------------------------------------- */
+.payment-section {
+  background: var(--color-bg-alt);
+}
+.payment-card-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.payment-card {
+  background: #ffffff;
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+.payment-card__badge {
+  background: linear-gradient(135deg, var(--color-primary-950), var(--color-primary-900));
+  color: #38bdf8;
+  padding: 12px 24px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.payment-card__content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 36px;
+  padding: 36px;
+  align-items: center;
+}
+.payment-qr-frame {
+  background: #0f172a;
+  border-radius: var(--radius-xl);
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.payment-qr-img {
+  width: 240px;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin: 0 auto 12px;
+  display: block;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  background: #ffffff;
+}
+.payment-qr-caption {
+  display: block;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.payment-details {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.payment-supported-apps {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.apps-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.apps-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.app-chip {
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  color: var(--color-primary-900);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+}
+.upi-id-box {
+  background: var(--color-bg-subtle);
+  border: 1px dashed var(--color-teal);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+}
+.upi-id-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  margin-bottom: 6px;
+}
+.upi-id-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.upi-id-input {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: var(--color-primary-950);
+}
+.btn--copy-upi {
+  background: var(--color-primary-900);
+  color: #ffffff;
+  border: none;
+  padding: 9px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+.btn--copy-upi:hover {
+  background: var(--color-teal);
+}
+.bank-info-box {
+  display: flex;
+  gap: 24px;
+  background: #f8fafc;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  border-left: 3px solid var(--color-teal);
+}
+.bank-info-item {
+  display: flex;
+  flex-direction: column;
+}
+.bank-info-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.payment-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (max-width: 768px) {
+  .payment-card__content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px 20px;
+  }
+  .payment-qr-frame {
+    max-width: 270px;
+    margin: 0 auto;
+  }
 }
 
 /* -------------------------------------------------------------------------- */
