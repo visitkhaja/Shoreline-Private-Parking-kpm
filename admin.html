@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard | Shoreline Private Parking</title>
+  <title>Admin Portal | Shoreline Private Parking</title>
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -13,11 +13,14 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
     }
+
+    /* Admin Navigation Header */
     .admin-header {
       background-color: #06182a;
       color: #ffffff;
-      padding: 16px 0;
+      padding: 14px 0;
       border-bottom: 2px solid #00A896;
     }
     .admin-header__inner {
@@ -30,7 +33,7 @@
     .admin-brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       color: #ffffff;
       text-decoration: none;
     }
@@ -50,6 +53,70 @@
       border-radius: 4px;
       letter-spacing: 1px;
     }
+
+    /* Login Screen */
+    .login-wrapper {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .login-card {
+      background: #ffffff;
+      max-width: 420px;
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+      padding: 36px 28px;
+      text-align: center;
+    }
+    .login-icon-box {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: #e6fffa;
+      color: #00A896;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(0, 168, 150, 0.15);
+    }
+    .login-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #06182a;
+      margin-bottom: 4px;
+    }
+    .login-subtitle {
+      font-size: 0.8rem;
+      color: #00A896;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+    .login-desc {
+      font-size: 0.86rem;
+      color: #64748b;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .login-error-msg {
+      color: #dc2626;
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-top: 10px;
+      display: none;
+    }
+
+    /* Dashboard Main */
     .admin-main {
       flex: 1;
       padding: 24px 0 48px;
@@ -68,7 +135,7 @@
       border: 1px solid #e2e8f0;
     }
     .kpi-card__title {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: #64748b;
@@ -160,45 +227,82 @@
       text-decoration: none;
     }
     .btn-wa-sm:hover { background: #128C7E; }
-    .config-banner {
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      color: #1e40af;
-      padding: 16px 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      font-size: 0.9rem;
-    }
   </style>
 </head>
 <body class="admin-body">
 
-  <!-- Admin Navigation Header -->
+  <!-- ==================== TOP NAVIGATION HEADER ==================== -->
   <header class="admin-header">
     <div class="container admin-header__inner">
       <a href="index.html" class="admin-brand">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#00A896" stroke-width="2.2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
         <h1>Shoreline Private Parking</h1>
-        <span class="admin-badge">Admin &bull; Gate View</span>
+        <span class="admin-badge">Admin Only</span>
       </a>
-      <div style="display: flex; gap: 8px;">
+
+      <!-- Header Action Controls -->
+      <div id="header-auth-controls" style="display: none; align-items: center; gap: 8px;">
         <button type="button" class="btn btn--outline btn--sm" id="btn-refresh" style="color: #ffffff; border-color: rgba(255,255,255,0.4); padding: 6px 14px; font-size: 0.85rem;">
           ↻ Refresh
         </button>
-        <a href="index.html" class="btn btn--primary btn--sm" style="padding: 6px 14px; font-size: 0.85rem;">
-          View Public Site &rarr;
-        </a>
+        <button type="button" class="btn btn--sm" id="btn-change-pass" style="background: rgba(255,255,255,0.15); color: #ffffff; padding: 6px 12px; font-size: 0.82rem; border: none; border-radius: 6px; cursor: pointer;">
+          🔑 Change PIN
+        </button>
+        <button type="button" class="btn btn--sm" id="btn-logout" style="background: #ef4444; color: #ffffff; padding: 6px 14px; font-size: 0.85rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 700;">
+          🚪 Log Out
+        </button>
       </div>
     </div>
   </header>
 
-  <main class="admin-main">
-    <div class="container">
-      
-      <!-- Supabase Setup Notice (Hidden when configured) -->
-      <div class="config-banner" id="config-notice" style="display: none;">
-        <strong>⚙️ Supabase Database Setup:</strong> To view live bookings from your database, enter your <code>SUPABASE_URL</code> and <code>SUPABASE_ANON_KEY</code> in <code>supabase-client.js</code>.
+  <!-- ==================== 1. ADMIN LOGIN LOCK SCREEN ==================== -->
+  <div id="admin-login-screen" class="login-wrapper">
+    <div class="login-card">
+      <div class="login-icon-box">
+        <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
       </div>
 
+      <h2 class="login-title">Restricted Admin Area</h2>
+      <p class="login-subtitle">Shoreline Private Parking &bull; Kayalpattinam Beach</p>
+      <p class="login-desc">This portal is strictly restricted to authorized management and parking attendants. Please enter your Admin Password / PIN to access customer booking records.</p>
+      
+      <form id="admin-login-form">
+        <div style="text-align: left; margin-bottom: 16px;">
+          <label for="admin-pass" style="display: block; font-weight: 700; font-size: 0.86rem; color: #1e293b; margin-bottom: 6px;">
+            Admin Password / PIN:
+          </label>
+          <div style="position: relative;">
+            <input type="password" id="admin-pass" placeholder="Enter Admin Password" required autocomplete="current-password" style="width: 100%; box-sizing: border-box; padding: 12px 42px 12px 14px; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 1rem;">
+            <button type="button" id="toggle-pass-visibility" aria-label="Toggle password visibility" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 1.1rem; padding: 4px;">
+              👁️
+            </button>
+          </div>
+          <div id="login-error" class="login-error-msg">
+            ❌ Incorrect password. Please try again.
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block btn--lg" style="width: 100%; border-radius: 8px; min-height: 48px; font-weight: 800; font-size: 1rem;">
+          <span>Unlock Admin Portal</span>
+        </button>
+      </form>
+
+      <div style="margin-top: 24px; font-size: 0.78rem; color: #94a3b8;">
+        🔒 Encrypted Gate Protection &bull; Shoreline Parking
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 2. PROTECTED ADMIN DASHBOARD CONTENT ==================== -->
+  <main class="admin-main" id="admin-content" style="display: none;">
+    <div class="container">
+      
       <!-- KPI Summary Cards -->
       <div class="admin-grid-kpi">
         <div class="kpi-card">
@@ -218,22 +322,25 @@
       <!-- Bookings Table Card -->
       <div class="admin-table-card">
         <div class="admin-table-toolbar">
-          <h2 style="font-size: 1.15rem; font-weight: 800; margin: 0; color: #06182a;">Recent Gate Reservations</h2>
-          <input type="text" id="search-input" class="admin-search-input" placeholder="Search by Vehicle # or Ref...">
+          <div>
+            <h2 style="font-size: 1.15rem; font-weight: 800; margin: 0; color: #06182a;">Customer Booking &amp; Payment Records</h2>
+            <small style="color: #64748b;">Direct real-time records from Shoreline Supabase database</small>
+          </div>
+          <input type="text" id="search-input" class="admin-search-input" placeholder="🔍 Search Vehicle #, Phone, Name...">
         </div>
 
         <div class="admin-table-wrap">
           <table class="admin-table" id="bookings-table">
             <thead>
               <tr>
-                <th>Ref Code</th>
+                <th>Pass Ref</th>
                 <th>Driver &amp; WhatsApp</th>
-                <th>Vehicle &amp; Plate</th>
+                <th>Vehicle &amp; Model</th>
                 <th>Plan</th>
                 <th>Arrival Time</th>
                 <th>Total</th>
-                <th>Status</th>
-                <th>Actions</th>
+                <th>Payment Status</th>
+                <th>Gate Action</th>
               </tr>
             </thead>
             <tbody id="bookings-tbody">
@@ -250,41 +357,127 @@
     </div>
   </main>
 
-  <!-- Supabase SDK & Configuration -->
+  <!-- Supabase Database SDK & Client -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-client.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // DEFAULT ADMIN PASSWORD: Shoreline@2026
+      const DEFAULT_ADMIN_PASSWORD = 'Shoreline@2026';
+      
+      const getStoredPassword = () => {
+        return localStorage.getItem('shoreline_custom_admin_pass') || DEFAULT_ADMIN_PASSWORD;
+      };
+
+      const loginScreen = document.getElementById('admin-login-screen');
+      const adminContent = document.getElementById('admin-content');
+      const authControls = document.getElementById('header-auth-controls');
+      const loginForm = document.getElementById('admin-login-form');
+      const passInput = document.getElementById('admin-pass');
+      const loginError = document.getElementById('login-error');
+      const togglePassBtn = document.getElementById('toggle-pass-visibility');
+      const btnLogout = document.getElementById('btn-logout');
+      const btnChangePass = document.getElementById('btn-change-pass');
+
       const tbody = document.getElementById('bookings-tbody');
       const searchInput = document.getElementById('search-input');
       const btnRefresh = document.getElementById('btn-refresh');
-      const configNotice = document.getElementById('config-notice');
       const kpiTotal = document.getElementById('kpi-total');
       const kpiToday = document.getElementById('kpi-today');
       const kpiRevenue = document.getElementById('kpi-revenue');
 
       let allBookings = [];
 
+      // Check Session Authentication State
+      const checkAuthState = () => {
+        const isAuthorized = sessionStorage.getItem('shoreline_admin_session') === 'authorized';
+        if (isAuthorized) {
+          loginScreen.style.display = 'none';
+          adminContent.style.display = 'block';
+          authControls.style.display = 'flex';
+          loadBookings();
+        } else {
+          loginScreen.style.display = 'flex';
+          adminContent.style.display = 'none';
+          authControls.style.display = 'none';
+          passInput.value = '';
+          loginError.style.display = 'none';
+          passInput.focus();
+        }
+      };
+
+      // Handle Admin Login Submission
+      if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const enteredPassword = passInput.value.trim();
+          const validPassword = getStoredPassword();
+
+          if (enteredPassword === validPassword) {
+            sessionStorage.setItem('shoreline_admin_session', 'authorized');
+            loginError.style.display = 'none';
+            checkAuthState();
+          } else {
+            loginError.style.display = 'block';
+            passInput.focus();
+            passInput.select();
+          }
+        });
+      }
+
+      // Password Toggle Visibility
+      if (togglePassBtn) {
+        togglePassBtn.addEventListener('click', () => {
+          if (passInput.type === 'password') {
+            passInput.type = 'text';
+            togglePassBtn.textContent = '🙈';
+          } else {
+            passInput.type = 'password';
+            togglePassBtn.textContent = '👁️';
+          }
+        });
+      }
+
+      // Handle Logout
+      if (btnLogout) {
+        btnLogout.addEventListener('click', () => {
+          sessionStorage.removeItem('shoreline_admin_session');
+          checkAuthState();
+        });
+      }
+
+      // Handle Change Password
+      if (btnChangePass) {
+        btnChangePass.addEventListener('click', () => {
+          const currentPass = prompt('Enter CURRENT admin password:');
+          if (currentPass !== getStoredPassword()) {
+            alert('Incorrect current password.');
+            return;
+          }
+          const newPass = prompt('Enter NEW admin password / PIN:');
+          if (newPass && newPass.trim().length >= 4) {
+            localStorage.setItem('shoreline_custom_admin_pass', newPass.trim());
+            alert('Admin password successfully updated!');
+          } else if (newPass !== null) {
+            alert('Password must be at least 4 characters.');
+          }
+        });
+      }
+
+      // Fetch Bookings from Supabase
       const loadBookings = async () => {
         if (!supabaseClient) {
-          if (configNotice) configNotice.style.display = 'block';
           tbody.innerHTML = `
             <tr>
-              <td colspan="8" style="text-align: center; padding: 32px;">
-                <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 8px;">
-                  ⚠️ Supabase credentials have not been configured yet.
-                </p>
-                <small style="color: #94a3b8;">
-                  Please add your <code>SUPABASE_URL</code> and <code>SUPABASE_ANON_KEY</code> into <code>supabase-client.js</code> to see live data.
-                </small>
+              <td colspan="8" style="text-align: center; padding: 32px; color: #ef4444;">
+                ⚠️ Supabase connection error. Please verify project credentials.
               </td>
             </tr>
           `;
           return;
         }
 
-        if (configNotice) configNotice.style.display = 'none';
-        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 24px;">Fetching records...</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 24px; color: #64748b;">Fetching real-time records...</td></tr>`;
 
         const res = await fetchBookingsFromSupabase(100);
         if (res.success && res.data) {
@@ -295,19 +488,20 @@
           tbody.innerHTML = `
             <tr>
               <td colspan="8" style="text-align: center; padding: 24px; color: #ef4444;">
-                Could not load bookings. Please verify your table name "bookings" and RLS policies in Supabase.
+                Could not load bookings. Please check Supabase table and permissions.
               </td>
             </tr>
           `;
         }
       };
 
+      // Render Table Rows
       const renderTable = (list) => {
         if (!list || list.length === 0) {
           tbody.innerHTML = `
             <tr>
               <td colspan="8" style="text-align: center; padding: 32px; color: #64748b;">
-                No bookings found yet. When a visitor reserves a spot on the website, it will show up here automatically!
+                No customer bookings found yet.
               </td>
             </tr>
           `;
@@ -317,34 +511,34 @@
         tbody.innerHTML = list.map(b => {
           const rawPhone = (b.phone || '').replace(/\D/g, '');
           const waPhone = rawPhone.startsWith('91') ? rawPhone : (rawPhone.length === 10 ? '91' + rawPhone : rawPhone);
-          const arrivalFormatted = b.arrival_datetime ? new Date(b.arrival_datetime).toLocaleString() : 'N/A';
+          const arrivalFormatted = b.arrival_datetime ? new Date(b.arrival_datetime).toLocaleString() : 'Not Specified';
           const isConfirmed = b.payment_status === 'confirmed';
 
           return `
             <tr>
-              <td><strong>${b.ref_code || '—'}</strong></td>
+              <td><strong style="color: #06182a; font-family: monospace; font-size: 0.95rem;">${b.ref_code || '—'}</strong></td>
               <td>
-                <div>${b.full_name || 'Guest'}</div>
+                <div style="font-weight: 700;">${b.full_name || 'Guest'}</div>
                 <div style="margin-top: 4px;">
                   <a href="https://wa.me/${waPhone}" target="_blank" rel="noopener" class="btn-wa-sm">
-                    💬 ${b.phone || 'WhatsApp'}
+                    💬 WhatsApp (${b.phone || 'Contact'})
                   </a>
                 </div>
               </td>
               <td>
-                <span style="font-weight: 700; color: #06182a;">${b.license_plate || '—'}</span><br>
+                <span style="font-weight: 800; color: #06182a; font-size: 0.95rem;">${b.license_plate || '—'}</span><br>
                 <small style="color: #64748b;">${b.vehicle_model || ''}</small>
               </td>
               <td><small>${b.parking_plan || 'Day Pass'}</small></td>
               <td><small>${arrivalFormatted}</small></td>
-              <td><strong style="color: #00A896;">${b.total_cost || '₹150'}</strong></td>
+              <td><strong style="color: #00A896; font-size: 1rem;">${b.total_cost || '₹150'}</strong></td>
               <td>
                 <span class="status-pill ${isConfirmed ? 'status-pill--confirmed' : 'status-pill--pending'}">
-                  ${isConfirmed ? '✓ Confirmed' : '⏳ Pending'}
+                  ${isConfirmed ? '✓ Confirmed / Paid' : '⏳ Pending'}
                 </span>
               </td>
               <td>
-                <button type="button" class="btn btn--outline btn--sm btn-toggle-status" data-id="${b.id}" data-status="${b.payment_status}" style="padding: 4px 10px; font-size: 0.75rem;">
+                <button type="button" class="btn btn--outline btn--sm btn-toggle-status" data-id="${b.id}" data-status="${b.payment_status}" style="padding: 4px 10px; font-size: 0.75rem; cursor: pointer;">
                   ${isConfirmed ? 'Mark Pending' : 'Mark Confirmed'}
                 </button>
               </td>
@@ -352,7 +546,7 @@
           `;
         }).join('');
 
-        // Attach toggle handlers
+        // Attach toggle handlers for gate attendants
         document.querySelectorAll('.btn-toggle-status').forEach(btn => {
           btn.addEventListener('click', async (e) => {
             const id = e.target.getAttribute('data-id');
@@ -384,7 +578,7 @@
         kpiRevenue.textContent = '₹' + totalRev.toLocaleString('en-IN');
       };
 
-      // Search input filter
+      // Search Filter
       if (searchInput) {
         searchInput.addEventListener('input', (e) => {
           const q = e.target.value.toLowerCase().trim();
@@ -406,7 +600,8 @@
         btnRefresh.addEventListener('click', loadBookings);
       }
 
-      loadBookings();
+      // Initial check
+      checkAuthState();
     });
   </script>
 </body>
