@@ -1887,6 +1887,168 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 16px;
 }
 
+/* Modal Receipt QR Box */
+.receipt-payment-qr-box {
+  background: #f8fafc;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.receipt-qr-header .qr-title {
+  display: block;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--color-primary-950);
+}
+.receipt-qr-header .qr-subtitle {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+}
+.receipt-qr-img-wrapper {
+  background: #ffffff;
+  display: inline-block;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 8px;
+}
+.receipt-qr-img {
+  width: 170px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+.receipt-bank-note {
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+}
+
+/* -------------------------------------------------------------------------- */
+/*  15B. UPI PAYMENT SECTION STYLES                                          */
+/* -------------------------------------------------------------------------- */
+.payment-section {
+  background: var(--color-bg-alt);
+}
+.payment-card-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.payment-card {
+  background: #ffffff;
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+.payment-card__badge {
+  background: linear-gradient(135deg, var(--color-primary-950), var(--color-primary-900));
+  color: #5eead4;
+  padding: 12px 24px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.payment-card__content {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 36px;
+  padding: clamp(20px, 4vw, 36px);
+  align-items: center;
+}
+.payment-qr-frame {
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-border);
+}
+.payment-qr-img {
+  width: 240px;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin: 0 auto 10px;
+  display: block;
+}
+.payment-qr-caption {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.payment-details {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.payment-merchant-box {
+  border-left: 3px solid var(--color-teal);
+  padding-left: 14px;
+}
+.merchant-name {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--color-primary-950);
+  margin: 4px 0;
+}
+.terminal-badge {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+.terminal-badge strong {
+  color: var(--color-primary-900);
+}
+.payment-supported-apps {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.apps-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.apps-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.app-chip {
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  color: var(--color-primary-900);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+}
+.payment-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (max-width: 768px) {
+  .payment-card__content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+  .payment-qr-frame {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
 /* -------------------------------------------------------------------------- */
 /*  16. FLOATING BACK TO TOP BUTTON                                          */
 /* -------------------------------------------------------------------------- */

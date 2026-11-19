@@ -423,6 +423,18 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
 
+        <!-- PhonePe Payment QR Section -->
+        <div class="receipt-payment-qr-box">
+          <div class="receipt-qr-header">
+            <span class="qr-title">Scan &amp; Pay via PhonePe / UPI</span>
+            <span class="qr-subtitle">PhonePe &bull; Google Pay &bull; Paytm &bull; BHIM</span>
+          </div>
+          <div class="receipt-qr-img-wrapper">
+            <img src="assets/images/payment-qr.png" alt="Scan to pay parking fee via PhonePe" class="receipt-qr-img" width="180" height="235" loading="lazy">
+          </div>
+          <div class="receipt-bank-note"><strong>SHORELINE PARKING</strong> &bull; Terminal 2-Q234286913</div>
+        </div>
+
         <div class="receipt-barcode">
           ||| | ||||| || |||||| | ||| |||| | |||
           <div style="font-size: 0.72rem; letter-spacing: 1px; margin-top: 4px;">SHOW AT KAYALPATTINAM BEACH ENTRANCE</div>
