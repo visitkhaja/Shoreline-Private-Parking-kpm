@@ -10,8 +10,8 @@
  * 3. Copy "anon public" API Key and paste into SUPABASE_ANON_KEY
  */
 
-const SUPABASE_URL = 'https://YOUR_PROJECT_ID.supabase.co';
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+const SUPABASE_URL = 'https://gvtoclvqkognauwgbjmh.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd2dG9jbHZxa29nbmF1d2diam1oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUwNzkxNjUsImV4cCI6MjExMDY1NTE2NX0.gU-mXmgoTtq_XnzeLx6KmzYuL7By9royq2wRrHT2rBE';
 
 // Initialize Supabase Client
 let supabaseClient = null;
