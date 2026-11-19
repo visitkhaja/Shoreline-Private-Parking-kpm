@@ -3,7 +3,7 @@
  * BUSINESS: Shoreline Private Parking (தனியார் வாகனக் காப்பகம்)
  * LOCATION: Kayalpattinam Beach, Tamil Nadu
  * SCRIPT:   Interactive Client Functionality (Vanilla JS)
- * VERSION:  2.0.0 - Integrated with Real Photos, Videos & WhatsApp Dispatch
+ * VERSION:  2.1.0 - Full Responsive & Accessible Navigation Engine
  * ============================================================================
  */
 
@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
   /* -------------------------------------------------------------------------- */
   const header = document.getElementById('site-header');
   const navToggle = document.getElementById('nav-toggle');
+  const navClose = document.getElementById('nav-close');
+  const navBackdrop = document.getElementById('nav-backdrop');
   const navMenu = document.getElementById('nav-menu');
   const navLinks = document.querySelectorAll('.nav-link');
   const backToTopBtn = document.getElementById('back-to-top');
@@ -63,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollPos = window.scrollY || window.pageYOffset;
 
     if (header) {
-      if (scrollPos > 30) {
+      if (scrollPos > 20) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
@@ -71,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (backToTopBtn) {
-      if (scrollPos > 400) {
+      if (scrollPos > 350) {
         backToTopBtn.classList.add('visible');
       } else {
         backToTopBtn.classList.remove('visible');
@@ -89,40 +91,60 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* -------------------------------------------------------------------------- */
-  /*  3. MOBILE NAVIGATION TOGGLE                                              */
+  /*  3. RESPONSIVE MOBILE DRAWER & ACCESSIBLE TOGGLE                           */
   /* -------------------------------------------------------------------------- */
-  const toggleMobileMenu = (forceState) => {
-    const isOpen = typeof forceState === 'boolean' 
-      ? forceState 
-      : navMenu.classList.contains('open');
+  const toggleMobileNav = (forceState) => {
+    if (!navMenu) return;
+    const isOpening = typeof forceState === 'boolean'
+      ? forceState
+      : !navMenu.classList.contains('is-active');
 
-    if (isOpen) {
-      navMenu.classList.remove('open');
-      navToggle.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
+    if (isOpening) {
+      navMenu.classList.add('is-active');
+      if (navBackdrop) navBackdrop.classList.add('is-active');
+      if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      if (navClose) navClose.focus();
     } else {
-      navMenu.classList.add('open');
-      navToggle.classList.add('open');
-      navToggle.setAttribute('aria-expanded', 'true');
+      navMenu.classList.remove('is-active');
+      if (navBackdrop) navBackdrop.classList.remove('is-active');
+      if (navToggle) {
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.focus();
+      }
+      document.body.style.overflow = '';
     }
   };
 
-  if (navToggle && navMenu) {
-    navToggle.addEventListener('click', () => toggleMobileMenu());
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        toggleMobileMenu(true);
-      });
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && navMenu.classList.contains('open')) {
-        toggleMobileMenu(true);
-        navToggle.focus();
-      }
-    });
+  if (navToggle) {
+    navToggle.addEventListener('click', () => toggleMobileNav(true));
   }
+  if (navClose) {
+    navClose.addEventListener('click', () => toggleMobileNav(false));
+  }
+  if (navBackdrop) {
+    navBackdrop.addEventListener('click', () => toggleMobileNav(false));
+  }
+
+  // Close drawer on any navigation link click
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => toggleMobileNav(false));
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (navMenu && navMenu.classList.contains('is-active')) {
+        toggleMobileNav(false);
+      }
+      if (lightbox && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+      if (bookingModal && bookingModal.classList.contains('active')) {
+        closeModal(bookingModal);
+      }
+    }
+  });
 
   /* -------------------------------------------------------------------------- */
   /*  4. SCROLL SPY ACTIVE NAV LINK                                            */
@@ -192,8 +214,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const plan = planSelect.value;
     const spotsCount = parseInt(spotsSelect.value, 10) || 1;
-    const isEvCharging = addonEv && addonEv.checked ? 100.00 : 0.00;
-    const isCarWash = addonWash && addonWash.checked ? 150.00 : 0.00;
+    // EV charging and water wash are upcoming (disabled on site)
+    const isEvCharging = addonEv && !addonEv.disabled && addonEv.checked ? 100.00 : 0.00;
+    const isCarWash = addonWash && !addonWash.disabled && addonWash.checked ? 150.00 : 0.00;
 
     let baseRate = 0;
     let breakdownText = '';
@@ -254,8 +277,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (bookingSection) {
           bookingSection.scrollIntoView({ behavior: 'smooth' });
           planSelect.focus();
-          planSelect.classList.add('is-focused');
-          setTimeout(() => planSelect.classList.remove('is-focused'), 1200);
         }
       }
     });
@@ -346,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
           arrival: arrivalDate.toLocaleString(),
           departure: departureDate.toLocaleString(),
           spots: spotsSelect.value,
-          addons: addonsSummary.length > 0 ? addonsSummary.join(', ') : 'Standard Parking Bay',
+          addons: addonsSummary.length > 0 ? addonsSummary.join(', ') : 'Standard Parking Bay (EV, Wash & Café Coming Soon)',
           total: totalCost
         });
 
@@ -363,9 +384,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const renderReceiptModal = (data) => {
     if (!receiptContainer || !bookingModal) return;
 
-    const rawAmount = (data.total || '').replace(/[^\d.]/g, '') || '150';
-    const upiPayUri = `upi://pay?pa=visitkhaja@okicici&pn=Shoreline%20Private%20Parking&am=${encodeURIComponent(rawAmount)}&cu=INR&tn=Booking-${encodeURIComponent(data.ref)}`;
-
     const whatsappMessage = encodeURIComponent(
       `*Shoreline Private Parking - Booking Confirmation*\n` +
       `Pass Ref: ${data.ref}\n` +
@@ -377,7 +395,6 @@ document.addEventListener('DOMContentLoaded', () => {
       `Departure: ${data.departure}\n` +
       `Services: ${data.addons}\n` +
       `Total: ${data.total}\n` +
-      `Payment UPI ID: visitkhaja@okicici (Central Bank of India)\n` +
       `Location: Kayalpattinam Beach, Tamil Nadu`
     );
 
@@ -385,10 +402,10 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="receipt-card">
         <div class="receipt-header">
           <div class="receipt-success-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <h2 id="modal-confirm-title" style="font-size: 1.45rem; margin-bottom: 4px;">Reservation Confirmed!</h2>
-          <p style="color: var(--color-text-muted); font-size: 0.88rem;">Shoreline Private Parking &bull; Kayalpattinam Beach</p>
+          <h2 id="modal-confirm-title" style="font-size: 1.4rem; margin-bottom: 4px;">Reservation Confirmed!</h2>
+          <p style="color: var(--color-text-muted); font-size: 0.86rem;">Shoreline Private Parking &bull; Kayalpattinam Beach</p>
           <div class="receipt-ref-code">${data.ref}</div>
         </div>
 
@@ -406,36 +423,12 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
 
-        <!-- Official Payment QR Section -->
-        <div class="receipt-payment-qr-box">
-          <div class="receipt-qr-header">
-            <span class="qr-title">Scan & Pay via UPI</span>
-            <span class="qr-subtitle">Google Pay &bull; PhonePe &bull; Paytm &bull; BHIM</span>
-          </div>
-          <div class="receipt-qr-img-wrapper">
-            <img src="assets/images/payment-qr.png" alt="Scan to pay parking pass via UPI" class="receipt-qr-img" width="175" height="184">
-          </div>
-          <div class="receipt-upi-id-badge">
-            <span class="upi-label">UPI ID:</span>
-            <span class="upi-val">visitkhaja@okicici</span>
-            <button type="button" class="btn-copy-sm" id="modal-copy-upi-btn" title="Copy UPI ID to clipboard">
-              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-              <span>Copy</span>
-            </button>
-          </div>
-          <div class="receipt-bank-note">Central Bank of India &bull; A/C ending 4085</div>
-          <a href="${upiPayUri}" class="btn--upi-pay-now">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-            <span>Pay ${data.total} via UPI App (Mobile)</span>
-          </a>
-        </div>
-
         <div class="receipt-barcode">
           ||| | ||||| || |||||| | ||| |||| | |||
           <div style="font-size: 0.72rem; letter-spacing: 1px; margin-top: 4px;">SHOW AT KAYALPATTINAM BEACH ENTRANCE</div>
         </div>
 
-        <div class="receipt-actions">
+        <div class="receipt-actions" style="display: flex; flex-direction: column; gap: 8px;">
           <a href="https://wa.me/919994548247?text=${whatsappMessage}" target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp-lg btn--block">
             <span>Send Pass to WhatsApp</span>
           </a>
@@ -446,19 +439,6 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
     `;
-
-    const modalCopyBtn = document.getElementById('modal-copy-upi-btn');
-    if (modalCopyBtn) {
-      modalCopyBtn.addEventListener('click', () => {
-        navigator.clipboard.writeText('visitkhaja@okicici').then(() => {
-          const span = modalCopyBtn.querySelector('span');
-          if (span) {
-            span.textContent = 'Copied!';
-            setTimeout(() => { span.textContent = 'Copy'; }, 2000);
-          }
-        }).catch(() => {});
-      });
-    }
 
     openModal(bookingModal);
   };
@@ -497,34 +477,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!activeGalleryList[index]) return;
     currentLightboxIndex = index;
     const item = activeGalleryList[index];
-    const type = item.getAttribute('data-type') || 'image';
     const src = item.getAttribute('data-src');
     const caption = item.getAttribute('data-caption') || '';
 
     lightboxMedia.innerHTML = '';
 
-    if (type === 'video') {
-      const videoEl = document.createElement('video');
-      videoEl.setAttribute('controls', 'true');
-      videoEl.setAttribute('autoplay', 'true');
-      videoEl.setAttribute('playsinline', 'true');
-      videoEl.style.width = '100%';
-      videoEl.style.maxHeight = '70vh';
-      const poster = item.getAttribute('data-poster');
-      if (poster) videoEl.setAttribute('poster', poster);
-
-      const sourceEl = document.createElement('source');
-      sourceEl.setAttribute('src', src);
-      sourceEl.setAttribute('type', 'video/mp4');
-
-      videoEl.appendChild(sourceEl);
-      lightboxMedia.appendChild(videoEl);
-    } else {
-      const imgEl = document.createElement('img');
-      imgEl.setAttribute('src', src);
-      imgEl.setAttribute('alt', caption);
-      lightboxMedia.appendChild(imgEl);
-    }
+    const imgEl = document.createElement('img');
+    imgEl.setAttribute('src', src);
+    imgEl.setAttribute('alt', caption);
+    lightboxMedia.appendChild(imgEl);
 
     if (lightboxCaption) lightboxCaption.textContent = caption;
     if (lightboxCounter) {
@@ -538,8 +499,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const closeLightbox = () => {
-    const video = lightboxMedia.querySelector('video');
-    if (video) video.pause();
     lightboxMedia.innerHTML = '';
     closeModal(lightbox);
   };
@@ -578,18 +537,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
-
-    if (e.key === 'Escape') {
-      closeLightbox();
-    } else if (e.key === 'ArrowLeft') {
-      lightboxPrev.click();
-    } else if (e.key === 'ArrowRight') {
-      lightboxNext.click();
-    }
-  });
-
   /* -------------------------------------------------------------------------- */
   /*  11. GALLERY FILTER TABS                                                  */
   /* -------------------------------------------------------------------------- */
@@ -618,7 +565,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* -------------------------------------------------------------------------- */
-  /*  12. QUICK INQUIRY FORM HANDLER (WHATSAPP DISPATCH)                        */
+  /*  12. QUICK INQUIRY FORM (WHATSAPP DISPATCH)                                */
   /* -------------------------------------------------------------------------- */
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
@@ -650,23 +597,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* -------------------------------------------------------------------------- */
-  /*  13. STANDALONE UPI ID COPY HANDLER                                        */
-  /* -------------------------------------------------------------------------- */
-  const copyUpiBtn = document.getElementById('copy-upi-btn');
-  if (copyUpiBtn) {
-    copyUpiBtn.addEventListener('click', () => {
-      const upiField = document.getElementById('upi-id-field');
-      const val = upiField ? upiField.value : 'visitkhaja@okicici';
-      navigator.clipboard.writeText(val).then(() => {
-        const span = copyUpiBtn.querySelector('span');
-        if (span) {
-          span.textContent = 'Copied!';
-          setTimeout(() => { span.textContent = 'Copy'; }, 2000);
-        }
-      }).catch(() => {});
-    });
-  }
-
 });
-
