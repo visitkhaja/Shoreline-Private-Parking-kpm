@@ -101,12 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (isOpening) {
       navMenu.classList.add('is-active');
+      if (header) header.classList.add('nav-open');
       if (navBackdrop) navBackdrop.classList.add('is-active');
       if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
       if (navClose) navClose.focus();
     } else {
       navMenu.classList.remove('is-active');
+      if (header) header.classList.remove('nav-open');
       if (navBackdrop) navBackdrop.classList.remove('is-active');
       if (navToggle) {
         navToggle.setAttribute('aria-expanded', 'false');
@@ -117,14 +119,29 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   if (navToggle) {
-    navToggle.addEventListener('click', () => toggleMobileNav(true));
+    navToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMobileNav();
+    });
   }
   if (navClose) {
-    navClose.addEventListener('click', () => toggleMobileNav(false));
+    navClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMobileNav(false);
+    });
   }
   if (navBackdrop) {
     navBackdrop.addEventListener('click', () => toggleMobileNav(false));
   }
+
+  // Close drawer if clicked outside navMenu on document
+  document.addEventListener('click', (e) => {
+    if (navMenu && navMenu.classList.contains('is-active')) {
+      if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+        toggleMobileNav(false);
+      }
+    }
+  });
 
   // Close drawer on any navigation link click
   navLinks.forEach(link => {
