@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (addonEv && addonEv.checked) addonsSummary.push('EV Fast Charge (+ ₹100)');
         if (addonWash && addonWash.checked) addonsSummary.push('Freshwater Car Wash (+ ₹150)');
 
-        renderReceiptModal({
+        const bookingData = {
           ref: refNumber,
           name: nameInput.value.trim(),
           phone: phoneInput.value.trim(),
@@ -383,10 +383,21 @@ document.addEventListener('DOMContentLoaded', () => {
           plan: planText,
           arrival: arrivalDate.toLocaleString(),
           departure: departureDate.toLocaleString(),
+          arrival_iso: arrivalDate.toISOString(),
+          departure_iso: departureDate.toISOString(),
           spots: spotsSelect.value,
           addons: addonsSummary.length > 0 ? addonsSummary.join(', ') : 'Standard Parking Bay (EV, Wash & Café Coming Soon)',
           total: totalCost
-        });
+        };
+
+        // Asynchronously persist booking to Supabase PostgreSQL database
+        if (typeof saveBookingToSupabase === 'function') {
+          saveBookingToSupabase(bookingData).catch(err => {
+            console.warn('Supabase background save notice:', err);
+          });
+        }
+
+        renderReceiptModal(bookingData);
 
         reservationForm.reset();
         initializeDates();
