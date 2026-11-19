@@ -1960,6 +1960,39 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.76rem;
   color: var(--color-text-muted);
 }
+.receipt-step-guide {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+  text-align: left;
+  background: #f0fdfa;
+  border: 1px solid #99f6e4;
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+}
+.receipt-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #0f766e;
+  line-height: 1.35;
+}
+.receipt-step-badge {
+  background: #0d9488;
+  color: #ffffff;
+  font-weight: 800;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
 
 /* -------------------------------------------------------------------------- */
 /*  15B. UPI PAYMENT SECTION STYLES                                          */

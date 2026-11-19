@@ -402,17 +402,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!receiptContainer || !bookingModal) return;
 
     const whatsappMessage = encodeURIComponent(
-      `*Shoreline Private Parking - Booking Confirmation*\n` +
-      `Pass Ref: ${data.ref}\n` +
-      `Driver: ${data.name}\n` +
-      `Phone: ${data.phone}\n` +
-      `Vehicle: ${data.vehicle} (${data.plate})\n` +
-      `Plan: ${data.plan}\n` +
-      `Arrival: ${data.arrival}\n` +
-      `Departure: ${data.departure}\n` +
-      `Services: ${data.addons}\n` +
-      `Total: ${data.total}\n` +
-      `Location: Kayalpattinam Beach, Tamil Nadu`
+      `*Shoreline Private Parking - Booking Pass*\n\n` +
+      `🎫 *Pass Ref:* ${data.ref}\n` +
+      `👤 *Driver:* ${data.name}\n` +
+      `📱 *Phone:* ${data.phone}\n` +
+      `🚗 *Vehicle:* ${data.vehicle} (${data.plate})\n` +
+      `🅿️ *Plan:* ${data.plan}\n` +
+      `📅 *Arrival:* ${data.arrival}\n` +
+      `🏁 *Departure:* ${data.departure}\n` +
+      `💰 *Total Amount:* ${data.total}\n\n` +
+      `✅ *Payment Status:* Paid via PhonePe QR / Ready to verify at gate\n` +
+      `📍 *Location:* Kayalpattinam Beach, Tamil Nadu\n\n` +
+      `📸 _(I have attached my payment screenshot for gate entry verification)_`
     );
 
     receiptContainer.innerHTML = `
@@ -443,13 +444,25 @@ document.addEventListener('DOMContentLoaded', () => {
         <!-- PhonePe Payment QR Section -->
         <div class="receipt-payment-qr-box">
           <div class="receipt-qr-header">
-            <span class="qr-title">Scan &amp; Pay via PhonePe / UPI</span>
+            <span class="qr-title">Scan &amp; Pay via PhonePe / Any UPI</span>
             <span class="qr-subtitle">PhonePe &bull; Google Pay &bull; Paytm &bull; BHIM</span>
           </div>
           <div class="receipt-qr-img-wrapper">
             <img src="assets/images/payment-qr.png" alt="Scan to pay parking fee via PhonePe" class="receipt-qr-img" width="180" height="235" loading="lazy">
           </div>
           <div class="receipt-bank-note"><strong>SHORELINE PARKING</strong> &bull; Terminal 2-Q234286913</div>
+        </div>
+
+        <!-- 2-Step Gate Entry Guide -->
+        <div class="receipt-step-guide">
+          <div class="receipt-step-item">
+            <span class="receipt-step-badge">1</span>
+            <div><strong>Step 1: Scan &amp; Pay ${data.total}</strong> using PhonePe, Google Pay, or Paytm.</div>
+          </div>
+          <div class="receipt-step-item">
+            <span class="receipt-step-badge">2</span>
+            <div><strong>Step 2: Tap Below to Send Pass &amp; Screenshot</strong> on WhatsApp for instant gate entry confirmation.</div>
+          </div>
         </div>
 
         <div class="receipt-barcode">
@@ -459,11 +472,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <div class="receipt-actions" style="display: flex; flex-direction: column; gap: 8px;">
           <a href="https://wa.me/919994548247?text=${whatsappMessage}" target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp-lg btn--block">
-            <span>Send Pass to WhatsApp</span>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.18-.54-1.745-.719-2.883-2.5-2.97-2.617-.087-.116-.708-.941-.708-1.792 0-.852.447-1.27.607-1.443.16-.174.348-.217.464-.217.116 0 .232.001.333.006.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+            <span>Send Pass &amp; Payment Proof on WhatsApp</span>
           </a>
           <button type="button" class="btn btn--outline btn--block" onclick="window.print()">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-            <span>Print Parking Pass</span>
+            <span>Print / Save Parking Pass</span>
           </button>
         </div>
       </div>
